@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "71fabe55-82fb-40c2-8e5c-646ddef48118",
+		"name": "KickstarterClone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22646256"
+	},
+	"item": [
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Get All Projects",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5hNHRoNWFuNDciLCJlbWFpbCI6Im5hdGhhbkB5NW80dXR1YjRlNDcuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkYy9FODZ5Mmp0NTZuRkVvNkRHaWhVZXYwVVdpT0ZZeEVQZTBFNnNEcEpXV0NNWEU1cXpIWGkiLCJpc0FkbWluIjp0cnVlLCJfaWQiOiI2MmZhNTlhZjRiYTMzMzlkMDg4NTM2MmYiLCJjcmVhdGVkQXQiOiIyMDIyLTA4LTE1VDE0OjM1OjI3LjM3MloiLCJ1cGRhdGVkQXQiOiIyMDIyLTA4LTE1VDE0OjM1OjI3LjM3MloiLCJfX3YiOjAsImlhdCI6MTY2MDU3NDEyNywiZXhwIjoxNjYxMTc4OTI3fQ.wtvjjoQ0eFLxfCQgrHSktrhtNn0TZ3zUu0phB3gfMvg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/projects",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"My yellow book 21\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/projects",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get A Project",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/projects/62f379670d38ab920d4e8b8d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"projects",
+								"62f379670d38ab920d4e8b8d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update A Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"           title has whitespaces                   \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/projects/62edeefe8f8b93a574cf33ad",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"projects",
+								"62edeefe8f8b93a574cf33ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete A Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/projects/62f379670d38ab920d4e8b8d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"projects",
+								"62f379670d38ab920d4e8b8d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/Users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"Users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"2natha32n@youtube.com\",\r\n    \"username\": \"2nathan32@youtube.com\",\r\n    \"password\": \"testpass\",\r\n    \"isAdmin\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/Users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"Users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login A User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"2natha32n@youtube.com\",\r\n    \"password\": \"testpass\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get A User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/Users/62f886fe035a65590a7df179",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"Users",
+								"62f886fe035a65590a7df179"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update A User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"nathan@youtube.com\",\r\n    \"username\": \"nath444an\",\r\n    \"password\": \"testpass\",\r\n    \"isAdmin\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/Users/62f886fe035a65590a7df179",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"Users",
+								"62f886fe035a65590a7df179"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete A User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/Users/62f886fe035a65590a7df179",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"Users",
+								"62f886fe035a65590a7df179"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "Token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmZiYTE1NzBmYzFiNzIzNWQ2N2QwMjkiLCJ1c2VybmFtZSI6IjJuYXRoYW4zMkB5b3V0dWJlLmNvbSIsImVtYWlsIjoiMm5hdGhhMzJuQHlvdXR1YmUuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjYwNjU4MDg0LCJleHAiOjE2NjA3NDQ0ODR9.T1U3uWDs-yty9rOBO-ODh8IPMx46TTe1nX1D0LDpmT0"
+		}
+	]
+}
