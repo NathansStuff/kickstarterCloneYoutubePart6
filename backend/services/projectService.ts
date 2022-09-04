@@ -1,9 +1,10 @@
 import { checkIsValidObjectId } from '../database/db';
 import ProjectModel from '../models/projectModel';
 import { sanitizeProject } from '../sanitizers/projectSanitizer';
+import { sanitizeId } from '../sanitizers/userSanitizer';
 import { IProjectSchema } from '../schema/projectSchema';
 import { ProjectType } from '../types/projectTypes';
-import { ErrorHandler } from '../utils/httpException';
+import HttpException, { ErrorHandler } from '../utils/httpException';
 
 export async function getProjects(): Promise<ProjectType[]> {
     try {
@@ -16,9 +17,10 @@ export async function getProjects(): Promise<ProjectType[]> {
 }
 
 export async function createProject(
-    project: ProjectType
+    project: ProjectType,
+    userId: string | undefined
 ): Promise<ProjectType> {
-    const sanitizedProject = sanitizeProject(project);
+    const sanitizedProject = sanitizeProject(project, userId);
 
     try {
         const newProject = await ProjectModel.create(sanitizedProject);
@@ -45,11 +47,14 @@ export async function getProjectById(
 
 export async function updateProject(
     projectId: string,
-    project: ProjectType
+    project: ProjectType,
+    userId: string | undefined
 ): Promise<IProjectSchema> {
     checkIsValidObjectId(projectId);
 
-    const sanitizedProject = sanitizeProject(project);
+    await isUserAuthorized(userId, projectId);
+
+    const sanitizedProject = sanitizeProject(project, userId);
 
     try {
         const updatedProject = await ProjectModel.findByIdAndUpdate(
@@ -65,8 +70,12 @@ export async function updateProject(
     }
 }
 
-export async function deleteProject(projectId: string): Promise<void> {
+export async function deleteProject(
+    projectId: string,
+    userId: string | undefined
+): Promise<void> {
     checkIsValidObjectId(projectId);
+    await isUserAuthorized(userId, projectId);
 
     try {
         const project = await ProjectModel.findByIdAndDelete(projectId);
@@ -75,5 +84,20 @@ export async function deleteProject(projectId: string): Promise<void> {
         return;
     } catch (err) {
         throw ErrorHandler(err);
+    }
+}
+
+async function isUserAuthorized(
+    userId: string | undefined,
+    projectId: string
+): Promise<void> {
+    const sanitizedUserId = sanitizeId(userId);
+    const projectToUpdate = await getProjectById(projectId);
+
+    if (sanitizedUserId !== projectToUpdate._id) {
+        throw new HttpException(
+            'You are not authorized to perform this action',
+            401
+        );
     }
 }

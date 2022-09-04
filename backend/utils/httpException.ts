@@ -12,10 +12,16 @@ export default class HttpException extends Error {
 }
 
 export function ErrorHandler(error: unknown): HttpException {
-    if (error instanceof HttpException) {
-        throw new HttpException(`Failed to create user: ${error.message}`, 400);
-    } else {
-        console.log(error);
-        throw new HttpException('Unknown error occurred', 500);
+    // Check error Type
+    if (!(error instanceof Error)) {
+        throw new HttpException('Encountered unknown error type', 500);
     }
+
+    // Check for known errors
+    if (error.message.includes('E11000')) {
+        throw new HttpException('Object with that ID already exists', 500);
+    }
+
+    // Catch all unknown / unthought of errors
+    throw new HttpException('Unknown error occurred', 500);
 }

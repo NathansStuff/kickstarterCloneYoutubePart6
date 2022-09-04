@@ -1,8 +1,14 @@
 import { ProjectType } from '../types/projectTypes';
 import HttpException from '../utils/httpException';
+import { sanitizeId } from './userSanitizer';
 
-export function sanitizeProject(project: ProjectType): ProjectType {
+export function sanitizeProject(
+    project: ProjectType,
+    userId: string | undefined
+): ProjectType {
+    const sanitzedId = sanitizeId(userId);
     const sanitizedProject: ProjectType = {
+        userId: sanitzedId,
         title: '',
     };
 

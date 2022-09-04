@@ -7,6 +7,7 @@ export interface IProjectSchema extends ProjectType {
 
 const projectSchema = new Schema<ProjectType>(
     {
+        userId: { type: String, required: true },
         title: {
             type: String,
             required: true,
